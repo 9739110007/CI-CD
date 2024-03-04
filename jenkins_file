@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_SCANNER_TOOL = 'sonar_scanner'
+        SONARQUBE_SCANNER_TOOL = tool 'sonar_scanner'
     }
 
     stages{
@@ -21,7 +21,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv(sonar_server) {
+                    withSonarQubeEnv('sonar_server') {
                         sh "${env.SONARQUBE_SCANNER_TOOL}/bin/sonar-scanner"
                     }    
                 }
