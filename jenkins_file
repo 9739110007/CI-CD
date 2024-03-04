@@ -27,5 +27,13 @@ pipeline {
                 }
             }
         }
-    }
-}
+        stage('Build App') {
+            steps {
+                sh '''
+                    make clean build
+                '''
+                    }
+                }
+            }
+        }
+
